@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Let It Snow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Existing CSS -->
+  <link rel="stylesheet" href="/public/style.css">
+
+  <!-- Bold font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Birthday Text Overlay – SLOW FADE, MOVED UP */
+    .birthday-text {
+      position: fixed;
+      inset: 0;
+      display: flex;
+
+      align-items: flex-start;     /* move text upward */
+      justify-content: center;
+      padding-top: 20vh;           /* control vertical position */
+
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 72px;
+      color: #d9d9d9;              /* pure white */
+
+      text-align: center;
+      pointer-events: none;
+
+      opacity: 0;
+      transition: opacity 12s ease; /* very slow fade */
+
+      z-index: 10;
+    }
+
+    .birthday-text.show {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 768px) {
+      .birthday-text {
+        font-size: 42px;
+        padding-top: 25vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="fixed-bg">
+    <canvas></canvas>
+  </div>
+
+  <!-- Birthday Message -->
+  <div class="birthday-text" id="birthdayText">
+    HAPPY BIRTHDAY<br>BUDDI
+  </div>
+
+  <!-- Mask Image for snow -->
+  <img class="text-img" src="./buddi.png" hidden />
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  <!-- Snow script (UNCHANGED) -->
+  <script src="/public/script.js"></script>
+
+  <!-- Show text after 5 seconds -->
+  <script>
+    setTimeout(() => {
+      document.getElementById("birthdayText").classList.add("show");
+    }, 5000);
+
+    setTimeout(() => {
+  window.location.href = "/public/cake.html";
+}, 12000); // adjust based on snow duration
+
+  </script>
+
+</body>
+</html>
