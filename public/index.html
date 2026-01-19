@@ -14,6 +14,31 @@
 <script src="https://unpkg.com/gsap@3/dist/MorphSVGPlugin.min.js"></script>
 
 <style>
+
+  .hint-btn {
+  margin: 10px auto 0;
+  display : block;
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hint-text {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.hint-text.show {
+  opacity: 1;
+}
+  
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ================= BULB STATE ================= */
@@ -205,6 +230,10 @@ html[style*="--on: 1"] .off-text {
       <h2>32 pallu baita petti navvedhi evru???</h2>
       <input type="password" class="password-input" id="passwordInput" placeholder="Our special word...">
       <button class="submit-btn" id="submitPassword">Enter</button>
+      <button class="hint-btn" id="hintBtn">Need a hint?</button>
+<div class="hint-text" id="hintText">
+ it is very famous in UHV kani nu anukunedhi kaadhu..evaradhi?
+</div>
     </div>
   </div>
 
@@ -236,6 +265,11 @@ html[style*="--on: 1"] .off-text {
 </svg>
 
 <script>
+
+  document.getElementById("hintBtn").addEventListener("click", () => {
+  document.getElementById("hintText").classList.toggle("show");
+});
+  
 /* ================= ROPE LOGIC ================= */
 const { gsap, Draggable, MorphSVGPlugin } = window;
 gsap.registerPlugin(Draggable, MorphSVGPlugin);
@@ -296,7 +330,7 @@ function toggleBulb() {
 
 /* ================= PASSWORD LOGIC ================= */
 button.addEventListener("click", () => {
-  if (input.value.toLowerCase() === "bujbuddi") {
+  if (input.value.toLowerCase() === "bujbudankai") {
     modal.style.opacity = "0";
     setTimeout(() => {
       modal.style.display = "none";
